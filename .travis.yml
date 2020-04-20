@@ -3,7 +3,7 @@ services:
   - docker
 
 env:
-  - DOCKER_REPO_SLUG=da3thni3ox/ui
+  - DOCKER_REPO_SLUG=d3r7nit3ox/ui
 
 jobs:
   include:
