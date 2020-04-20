@@ -2,8 +2,17 @@ language: python
 services:
   - docker
 
-before_script:
-  - docker pull hello-world
+env:
+  - DOCKER_REPO=da3thni3ox
 
-script:
-  - docker run hello-world
+jobs:
+  include:
+    - stage: Build
+      name: Build image
+      script:
+        - docker build -t $DOCKER_REPO/ui:latest
+
+after_success:
+  - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO/ui:latest; else true; fi
+
+
