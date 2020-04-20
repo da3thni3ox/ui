@@ -5,9 +5,6 @@ services:
 env:
   - DOCKER_REPO_SLUG=da3thni3ox/ui
 
-before_script:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-
 jobs:
   include:
     - stage: Build
@@ -16,7 +13,7 @@ jobs:
         - docker build -t $DOCKER_REPO_SLUG:latest .
 
 after_success:
-  - echo $TRAVIS_BRANCH
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO_SLUG:latest; else true; fi
 
 
