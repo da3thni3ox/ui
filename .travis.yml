@@ -4,4 +4,6 @@ services:
 
 before_script:
   - docker pull hello-world
+
+script:
   - docker run hello-world
