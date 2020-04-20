@@ -1,3 +1,7 @@
 language: python
 services:
   - docker
+
+before_script:
+  - docker pull hello-world
+  - docker run hello-world
