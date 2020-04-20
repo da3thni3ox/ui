@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui
+spec:
+  selector:
+    app: reddit
+    component: ui
+  ports:
+  - port: 9292
+    targetPort: 9292

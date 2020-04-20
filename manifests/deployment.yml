@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  app: reddit
+  component: ui
+spec:
+  selector:
+    matchLabels:
+      app: reddit
+      component: ui
+  template:
+    metadata:
+      labels:
+        app: reddit
+        component: ui
+    spec:
+      containers:
+      - name: ui
+        image: d3r7nit3ox/ui:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 9292
