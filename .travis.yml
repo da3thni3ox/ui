@@ -3,7 +3,7 @@ services:
   - docker
 
 env:
-  - DOCKER_REPO=da3thni3ox
+  - DOCKER_REPO_SLUG=da3thni3ox/ui
 
 jobs:
   include:
@@ -13,6 +13,6 @@ jobs:
         - docker build -t $DOCKER_REPO/ui:latest
 
 after_success:
-  - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO/ui:latest; else true; fi
+  - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO_SLUG:latest; else true; fi
 
 
