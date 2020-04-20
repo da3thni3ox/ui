@@ -10,7 +10,7 @@ jobs:
     - stage: Build
       name: Build image
       script:
-        - docker build -t $DOCKER_REPO/ui:latest
+        - docker build -t $DOCKER_REPO_SLUG:latest
 
 after_success:
   - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO_SLUG:latest; else true; fi
